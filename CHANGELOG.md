@@ -9,7 +9,7 @@ The authoritative version string lives in [`VERSION`](VERSION).
 
 ### Changed
 
-- `@jankurai/ux-qa` package version is `1.7.1`, matching the public CLI release.
+- `@jankurai/ux-qa` package version is `1.7.2`, matching the public CLI release (was `1.7.1`).
 
 ### Added
 
