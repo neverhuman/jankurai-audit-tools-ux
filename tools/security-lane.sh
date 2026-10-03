@@ -7,9 +7,6 @@ mkdir -p target
 echo "[security] secret scan: gitleaks detect"
 gitleaks detect --source . --no-banner --redact
 
-echo "[security] workflow lint: actionlint"
-actionlint
-
 echo "[security] npm audit"
 npm audit --audit-level=high
 

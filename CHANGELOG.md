@@ -7,6 +7,12 @@ The authoritative version string lives in [`VERSION`](VERSION).
 
 ## [Unreleased]
 
+### Removed
+
+- GitHub Actions workflows (`.github/workflows/`), the GitHub job aggregate
+  (`ops/ci/aggregate.sh`) and the actionlint/zizmor workflow lint steps. GitHub
+  is a publishing mirror only; CI runs on the forge and our hosts.
+
 ### Changed
 
 - `@jankurai/ux-qa` package version is `1.7.2`, matching the public CLI release (was `1.7.1`).

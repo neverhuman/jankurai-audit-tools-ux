@@ -5,7 +5,6 @@
 <!-- jankurai-badge:end -->
 
 [![jankurai audit](https://img.shields.io/badge/jankurai-audit-passing-brightgreen)](.jankurai/repo-score.md)
-[![ci](https://img.shields.io/badge/ci-build%20%7C%20security%20%7C%20audit-blue)](.github/workflows/ci.yml)
 
 UX QA tooling for the **jankurai** standard: a Playwright and axe wrapper that
 emits deterministic, artifact-backed rendered UX proof receipts. This repository
@@ -33,8 +32,9 @@ just check
 ```
 
 The full command surface lives in the root [`Justfile`](Justfile). Continuous
-integration runs the same lanes under
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+integration runs the same lanes on the forge and our own hosts. GitHub is a
+publishing mirror only; it runs no workflows. Releases are built and signed on
+our servers.
 
 ## Layout
 

@@ -9,15 +9,12 @@ jankurai-tools-ux. Read the root [`AGENTS.md`](../AGENTS.md) first.
   `audit`, `tool-adoption`, `quality-gates`) plus the shared `lib.sh` helpers.
 - `ops/git-hooks/pre-push` — the mandatory pre-push gate that runs
   `bash ops/ci/quality-gates.sh`.
-- The CI workflow contract: `.github/workflows/ci.yml` delegates every job to one
-  of these scripts so local runs and CI execute identical commands.
+- The CI contract: CI on the forge and our hosts calls these scripts so local
+  runs and CI execute identical commands.
 
 ## Forbidden
 
-- Do not inline build/test/security commands directly into
-  `.github/workflows/*.yml`; every step must call an `ops/ci/<lane>.sh` script.
-- Do not unpin GitHub Actions; every third-party action stays pinned to a
-  full 40-character commit SHA.
+- Do not add GitHub Actions workflows; GitHub is a publishing mirror only.
 - Do not weaken the security or audit lanes (no `continue-on-error`, no
   `|| true`, no nonblocking overrides).
 - Do not hand-edit generated zones listed in

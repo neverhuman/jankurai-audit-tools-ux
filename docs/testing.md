@@ -88,7 +88,6 @@ where to rerun proof over free-form logging.
 
 The fast lane is bounded: the unit/spec runner and the no-write jankurai audit
 both complete well within the CI lane timeouts declared in
-[`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and
 [`agent/proof-lanes.toml`](../agent/proof-lanes.toml). Full Playwright browser
 runs are reserved for the `e2e`/`full` lanes so day-to-day iteration stays cheap.
 There are no paid or unbounded external calls in any lane; the explicit budget,
