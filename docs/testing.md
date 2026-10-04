@@ -14,6 +14,23 @@ covers the change.
 | `audit` | jankurai repo score and hard-rule findings |
 | `full` | release/merge gate (all of the above) |
 
+## Bootstrap
+
+Dependency and browser acquisition is a separate, explicit step --- the only one
+that uses the network:
+
+```bash
+bash ops/ci/bootstrap.sh   # npm ci + the pinned chromium headless shell
+```
+
+It stamps `node_modules/.jankurai-bootstrap` with the `package-lock.json`
+digest. Every lane starts with `ops/ci/check-bootstrap.sh`, which confirms
+offline that the stamp matches the current lockfile and that the pinned
+Playwright revision is unpacked; otherwise it fails with the single line
+`run ops/ci/bootstrap.sh`. Hosts run the bootstrap once per checkout as a setup
+hook, so `bash scripts/ci-local.sh required` is reproducible on identical source
+with no network at all.
+
 ## Fast lane
 
 The fast lane is the narrowest proof loop for agent iteration. Locally it runs
@@ -104,8 +121,8 @@ in [`docs/release.md`](release.md):
 - **Security**: the `security` lane runs `gitleaks detect` and
   `npm audit --audit-level=high`; CI uploads the result.
 - **Integrity and backups**: `package-lock.json` is committed and CI installs
-  with `npm ci`, so any release can be reinstalled bit-for-bit from its immutable
-  tag; the SBOM is generated as `sbom.json`.
+  with `npm ci` via `ops/ci/bootstrap.sh`, so any release can be reinstalled
+  bit-for-bit from its immutable tag; the SBOM is generated as `sbom.json`.
 - **Monitoring**: the `audit` lane writes `.jankurai/repo-score.json` and
   `.jankurai/repo-score.md`, the monitored score artifacts CI uploads on every
   run so regressions and new findings are observable before merge.

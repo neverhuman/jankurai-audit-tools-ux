@@ -14,11 +14,11 @@
       "purpose": "verify the deterministic smoke-server fixture harness used by the suite"
     },
     "package.json": {
-      "command": "npm ci",
+      "command": "bash ops/ci/bootstrap.sh",
       "purpose": "verify the workspace manifest resolves against the locked dependency graph"
     },
     "package-lock.json": {
-      "command": "npm ci",
+      "command": "bash ops/ci/bootstrap.sh",
       "purpose": "verify the locked dependency graph installs and stays consistent"
     },
     "Justfile": {

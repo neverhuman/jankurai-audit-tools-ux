@@ -21,7 +21,8 @@ New implementation is TypeScript-first; see
 ## Quick start
 
 ```bash
-# One-command setup (install workspace dependencies from the lockfile).
+# One-command setup: the only step that uses the network. Installs the locked
+# dependency graph and the pinned Playwright browser (`bash ops/ci/bootstrap.sh`).
 just setup
 
 # Deterministic fast lane (typecheck/build + tests + self-audit).
@@ -30,6 +31,10 @@ just fast
 # Full local check: format, lint, fast, security, and self-audit.
 just check
 ```
+
+Every other lane is offline: they verify the bootstrap and fail with
+`run ops/ci/bootstrap.sh` instead of installing anything, so a gate run never
+depends on the npm registry or the browser CDN.
 
 The full command surface lives in the root [`Justfile`](Justfile). Continuous
 integration runs the same lanes on the forge and our own hosts. GitHub is a

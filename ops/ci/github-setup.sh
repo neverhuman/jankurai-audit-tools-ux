@@ -13,8 +13,9 @@ if [[ "${GITHUB_ACTIONS:-}" == true ]]; then
   bash ops/ci/install-security-tools.sh
 fi
 if [[ -f Cargo.toml ]]; then cargo fetch --locked; fi
-if [[ -f package-lock.json ]]; then npm ci; fi
-if [[ -d packages/ux-qa ]]; then npm exec -- playwright install --with-deps chromium --only-shell; fi
+# Dependencies and the pinned browser come from the one bootstrap script the
+# lanes verify against, so public CI and local runs install the same thing.
+if [[ -f package-lock.json ]]; then BOOTSTRAP_WITH_DEPS=1 bash ops/ci/bootstrap.sh; fi
 # Build an exact published auditor source in an automatically removed CI sandbox.
 source_root="$(mktemp -d "$repo_root/target/ci-auditor.XXXXXX")"
 trap 'rm -rf "$source_root"' EXIT

@@ -6,9 +6,10 @@
 default:
     @just --list
 
-# One-command bootstrap: install the workspace dependencies this repo needs.
+# One-command bootstrap: install the workspace dependencies and the pinned
+# Playwright browser. The only lane allowed to use the network.
 setup:
-    npm ci
+    bash ops/ci/bootstrap.sh
     npm --workspace @jankurai/ux-qa run build
 
 # Alias for setup so `just install` and `just bootstrap` also resolve.

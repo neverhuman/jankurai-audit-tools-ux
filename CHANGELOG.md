@@ -7,6 +7,16 @@ The authoritative version string lives in [`VERSION`](VERSION).
 
 ## [Unreleased]
 
+### Changed
+
+- Dependency and browser acquisition moved out of the gate lanes into
+  `ops/ci/bootstrap.sh` (usable as a host setup hook). `ops/ci/required.sh` and
+  `ops/ci/fast.sh` now verify the bootstrap offline through
+  `ops/ci/check-bootstrap.sh` --- `node_modules` stamped with the current
+  `package-lock.json` digest and the pinned Playwright chromium headless shell
+  unpacked --- and fail with `run ops/ci/bootstrap.sh` otherwise, so a gate run
+  no longer depends on the npm registry or the browser CDN.
+
 ### Removed
 
 - GitHub Actions workflows (`.github/workflows/`), the GitHub job aggregate
