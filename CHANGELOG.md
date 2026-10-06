@@ -25,7 +25,8 @@ The authoritative version string lives in [`VERSION`](VERSION).
 
 ### Changed
 
-- `@jankurai/ux-qa` package version is `1.7.2`, matching the public CLI release (was `1.7.1`).
+- `@jankurai/ux-qa` package version is `1.7.3`, matching the public CLI release (was `1.7.2`).
+- `agent/standard-version.toml` declares `auditor_version = "1.7.3"`, the family auditor pin.
 
 ### Added
 
