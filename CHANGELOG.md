@@ -7,6 +7,15 @@ The authoritative version string lives in [`VERSION`](VERSION).
 
 ## [Unreleased]
 
+## [1.7.6] - 2026-10-29
+
+The UX QA package and CLI identify as `1.7.6`, aligned with the upcoming family auditor.
+`VERSION` is `1.7.6-split.0`; standard/schema versions remain unchanged.
+
+Source changes generated from the published hub v1.7.5 member pin `4073df53f635c60fa35b6913e1bd0b3688434ee0`:
+
+No additional implementation changes since that member pin.
+
 ## [1.7.5] - 2026-10-14
 
 `VERSION` is `1.7.5-split.0`.
